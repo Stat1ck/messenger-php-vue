@@ -7,8 +7,10 @@ use core\DI\SenderDI;
 class Run extends SenderDI {
 	
 	public function start() {
-		$this->router->start($this->di->get('router_config'), $this->di->get('router_types'));
-		$this->db->connect($this->di->get('db_config'));
+		$this->router->init($this->router_cfg, $this->router_types, $this->request_url);
+		$this->db->init($this->db_cfg);
+
+		$this->di->set('currentUrlParams', $this->router->getCurrentUrlParams());
 
 		//debug($this->di);
 	}

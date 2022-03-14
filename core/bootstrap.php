@@ -5,8 +5,11 @@ use app\Run;
 
 try{
 	$InitDI = new InitDI();
+
+	$InitDI->init_variables();
 	$InitDI->init_configs();
 	$InitDI->init_services();
+
 	$di = $InitDI->getDI();
 
 	$run = new Run($di);

@@ -13,6 +13,10 @@ class InitDI {
 	public function __construct() {
 		$this->di = new DI();
 	}
+	
+	public function init_variables() : void {
+		$this->di->set('request_url', $_SERVER['REQUEST_URI']);
+	}
 
 	public function init_configs() : void {
 		$this->di->set('db_config', require_once D . '\config\DB\DB-config.php');

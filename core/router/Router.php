@@ -14,20 +14,14 @@ class Router {
 		'prot_path' => []
 	];
 
-	public function start(array $config, array $types) {
+	public function init(array $config, array $types, string $request_url) : void {
 		$this->router_config = $config;
 		$this->types = $types;
-		$this->url = $_SERVER['REQUEST_URI'];
-
-		$this->parseUrl();
+		$this->request_url = $request_url;
 	}
 	
-	private function parseUrl() {
-		$parse_url = parse_url($this->url);
-
-		$this->params['path'] = $this->getPathParams($parse_url['path']);
-
-		$this->params['query'] = $this->getQueryParams((!empty($parse_url['query'])) ? $parse_url['query'] : "");
+	public function getCurrentUrlParams() : array {
+		$this->parseUrl();
 
 		$rPaths = $this->getConfigPaths();
 
@@ -35,16 +29,31 @@ class Router {
 
 		$changed_routes = $this->changeRouterPaths($this->router_config, $rPaths);
 
-		$currentParams = $this->findMatchesInUrl($changed_routes, $rUrl);
+		$currentUrlParams = $this->findMatchesInUrl($changed_routes, $rUrl);
 
-		//debug($currentParams);
+		return $currentUrlParams;
+	}
+
+	private function parseUrl() : void {
+		$parse_url = parse_url($this->request_url);
+
+		$this->params['path'] = $this->getPathParams($parse_url['path']);
+
+		$this->params['query'] = $this->getQueryParams((!empty($parse_url['query'])) ? $parse_url['query'] : "");
 	}
 
 	private function findMatchesInUrl($routes = [], string $url) : array {
 		$i = 0;
 		foreach ($routes as $route => $params) {
 			if (preg_match('#^'.$route.'$#', $url)) {
-				return ['url' => $url, 'full_url' => $this->url, 'params' => $params, 'query' => $this->params['query'], 'url_params' => $this->getUrlParams($i)];
+				return [
+					'url'			=> $url, 
+					'full_url'		=> $this->request_url, 
+					'params'		=> $params, 
+					'query'			=> $this->params['query'], 
+					'url_params'	=> $this->getUrlParams($i),
+					'isApi'			=> $this->isApi($this->params['path'])
+				];
 			}
 
 			$i++;
@@ -141,5 +150,13 @@ class Router {
 		}
 
 		return $path;
+	}
+
+	private function isApi($path = []) : bool {
+		if ($path[1] === 'api') {
+			return true;
+		}
+
+		return false;
 	}
 }
