@@ -5,25 +5,22 @@ namespace core\DI;
 abstract class SenderDI {
 
 	protected $di;
+	protected $error;
 	protected $db;
 	protected $router;
+	protected $routerParams;
+	protected $api;
 
-	public function __construct($di) {
+	public function __construct(object $di) {
 		$this->di			= $di;
 
 		$this->error		= $this->di->get('error');
-		$this->error_cfg	= $this->di->get('error_config');
 
 		$this->db			= $this->di->get('db');
-		$this->db_cfg		= $this->di->get('db_config');
 
 		$this->router		= $this->di->get('router');
-		$this->router_cfg	= $this->di->get('router_config');
-		$this->router_types	= $this->di->get('router_types');
-
-		$this->request_url  = $this->di->get('request_url');
+		$this->routerParams = $this->router->start();
 
 		$this->api			= $this->di->get('api');
-
 	}
 }

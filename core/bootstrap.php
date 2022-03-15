@@ -1,19 +1,20 @@
 <?php
 
 use core\DI\InitDI;
-use app\Run;
+use app\App;
 
 try{
 	$InitDI = new InitDI();
 
-	$InitDI->init_variables();
-	$InitDI->init_configs();
-	$InitDI->init_services();
+	$di = $InitDI
+		->init_variables()
+		->init_configs()
+		->init_services()
+		->getDI();
 
-	$di = $InitDI->getDI();
+	$app = new App($di);
+	$app->start();
 
-	$run = new Run($di);
-	$run->start();
 } catch(\ErrorException $e) {
 	echo $e->getMessage();
 }

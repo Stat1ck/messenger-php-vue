@@ -2,8 +2,6 @@
 
 namespace core\router;
 
-use core\errors\Error;
-
 class Router {
 
 	private $router_config = [];
@@ -15,14 +13,14 @@ class Router {
 	];
 	private $error;
 
-	public function init(array $config, array $types, string $request_url, object $error) : void {
+	public function __construct(array $config, array $types, string $request_url, object $error) {
 		$this->router_config	= $config;
 		$this->types			= $types;
 		$this->request_url		= $request_url;
 		$this->error			= $error;
 	}
 	
-	public function getCurrentUrlParams() : array {
+	public function start() : array {
 		$this->parseUrl();
 
 		$rPaths = $this->getConfigPaths();
@@ -31,9 +29,9 @@ class Router {
 
 		$changed_routes = $this->changeRouterPaths($this->router_config, $rPaths);
 
-		$currentUrlParams = $this->findMatchesInUrl($changed_routes, $rUrl);
+		$routerParams = $this->findMatchesInUrl($changed_routes, $rUrl);
 
-		return $currentUrlParams;
+		return $routerParams;
 	}
 
 	private function parseUrl() : void {

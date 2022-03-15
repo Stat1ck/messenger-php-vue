@@ -6,7 +6,7 @@ class Error {
 
 	private $errors = [];
 
-	public function init($errors = []) {
+	public function __construct($errors = []) {
 		$this->errors = $errors;
 	}
 

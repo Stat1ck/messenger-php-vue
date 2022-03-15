@@ -16,26 +16,41 @@ class InitDI {
 		$this->di = new DI();
 	}
 	
-	public function init_variables() : void {
+	public function init_variables() : object {
 		$this->di->set('request_url', $_SERVER['REQUEST_URI']);
+
+		return $this;
 	}
 
-	public function init_configs() : void {
+	public function init_configs() : object {
 		$this->di->set('db_config', require_once D . '\config\db\db-config.php');
 		$this->di->set('router_config', require_once D . '\config\router\routes.php');
 		$this->di->set('router_types', require_once D . '\config\router\types.php');
 		$this->di->set('error_config', require_once D . '\config\error\error-config.php');
+
+		return $this;
 	}
 
-	public function init_services() : void {
-		$this->di->set('db', new DB());
-		$this->di->set('router', new Router());
+	public function init_services() : object {
+		$this->di->set('error', new Error(
+			$this->di->get('error_config')
+		));
+		$this->di->set('db', new DB(
+			$this->di->get('db_config')
+		));
+		$this->di->set('router', new Router(
+			$this->di->get('router_config'),
+			$this->di->get('router_types'),
+			$this->di->get('request_url'),
+			$this->di->get('error')
+		));
 		$this->di->set('api', new Api());
-		$this->di->set('error', new Error());
+
+		return $this;
 	}
 
-	public function getDI() {
-		return (!empty($this->di)) ? $this->di : [];
+	public function getDI() : object {
+		return (!empty($this->di)) ? $this->di : (object)[];
 	}
 
 }

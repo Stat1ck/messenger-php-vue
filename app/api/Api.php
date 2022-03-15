@@ -6,15 +6,15 @@ class Api {
 	
 	private $params = [];
 
-	public function init($params = []) {
+	public function init($params = []) : object {
 		$this->params = $params;
 
-		$this->start();
+		return $this;
 	}
 
-	private function start() {
+	public function start() : void {
 		$controllerPath = 'app\api\controllers\\' . ucfirst($this->params['params']['controller']) . 'ApiController';
-		$action = $this->params['params']['action'] . 'Action';
+		$action = $this->params['params']['action'] . ucfirst($this->params['params']['controller']) . 'Action';
 
 		if (class_exists($controllerPath)) {
 			$controller = new $controllerPath();
@@ -29,6 +29,5 @@ class Api {
 		else {
 			// status code 404
 		}
-		
 	}
 }

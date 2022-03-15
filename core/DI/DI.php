@@ -5,12 +5,8 @@ namespace core\DI;
 class DI {
 	private $di = [];
 
-	public function set(string $key, $value, bool $flag = false) {
+	public function set(string $key, $value) {
 		$this->di[$key] = $value;
-
-		if ($flag) {
-			return $this->get($key);
-		}
 	}
 
 	public function get(string $key) {
