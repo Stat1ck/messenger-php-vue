@@ -11,6 +11,9 @@ abstract class SenderDI {
 	public function __construct($di) {
 		$this->di			= $di;
 
+		$this->error		= $this->di->get('error');
+		$this->error_cfg	= $this->di->get('error_config');
+
 		$this->db			= $this->di->get('db');
 		$this->db_cfg		= $this->di->get('db_config');
 
@@ -19,6 +22,8 @@ abstract class SenderDI {
 		$this->router_types	= $this->di->get('router_types');
 
 		$this->request_url  = $this->di->get('request_url');
+
+		$this->api			= $this->di->get('api');
 
 	}
 }

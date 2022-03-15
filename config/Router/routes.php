@@ -7,7 +7,7 @@ return [
 		'action'		=> 'userpage',
 		'title'			=> 'Страница',
 		'method'		=> 'GET',
-		'access'		=> 'public'
+		'access'		=> 'public',
 	],
 
 	'/group/:groupname' => [
@@ -15,7 +15,7 @@ return [
 		'action'		=> 'grouppage',
 		'title'			=> 'Страница',
 		'method'		=> 'GET',
-		'access'		=> 'public'
+		'access'		=> 'public',
 	],
 
 	'/' => [
@@ -23,7 +23,7 @@ return [
 		'action'		=> 'index',
 		'title'			=> 'Главная',
 		'method'		=> 'GET',
-		'access'		=> 'public'
+		'access'		=> 'public',
 	],
 
 	'/register' => [
@@ -31,14 +31,14 @@ return [
 		'action'		=> 'register',
 		'title'			=> 'Регистрация',
 		'method'		=> 'GET',
-		'access'		=> 'public'
+		'access'		=> 'public',
 	],
 
 	'/api/create/user' => [
-		'controller'	=> 'account',
-		'action'		=> 'register',
+		'controller'	=> 'user',
+		'action'		=> 'create',
 		'title'			=> '',
 		'method'		=> 'POST',
-		'access'		=> 'public'
+		'access'		=> 'public',
 	],
 ];

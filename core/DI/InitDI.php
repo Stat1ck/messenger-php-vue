@@ -5,6 +5,8 @@ namespace core\DI;
 use core\DI\DI;
 use core\database\DB;
 use core\router\Router;
+use app\api\Api;
+use core\errors\Error;
 
 class InitDI {
 
@@ -19,18 +21,21 @@ class InitDI {
 	}
 
 	public function init_configs() : void {
-		$this->di->set('db_config', require_once D . '\config\DB\DB-config.php');
-		$this->di->set('router_config', require_once D . '\config\Router\routes.php');
-		$this->di->set('router_types', require_once D . '\config\Router\types.php');
+		$this->di->set('db_config', require_once D . '\config\db\db-config.php');
+		$this->di->set('router_config', require_once D . '\config\router\routes.php');
+		$this->di->set('router_types', require_once D . '\config\router\types.php');
+		$this->di->set('error_config', require_once D . '\config\error\error-config.php');
 	}
 
 	public function init_services() : void {
 		$this->di->set('db', new DB());
 		$this->di->set('router', new Router());
+		$this->di->set('api', new Api());
+		$this->di->set('error', new Error());
 	}
 
 	public function getDI() {
-		return (!empty($this->di)) ? $this->di : null;
+		return (!empty($this->di)) ? $this->di : [];
 	}
 
 }

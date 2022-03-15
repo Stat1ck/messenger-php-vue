@@ -11,13 +11,15 @@ class Router {
 	private $params = [];
 	private $types = [];
 	private $data = [
-		'prot_path' => []
+		'prot_path' => [],
 	];
+	private $error;
 
-	public function init(array $config, array $types, string $request_url) : void {
-		$this->router_config = $config;
-		$this->types = $types;
-		$this->request_url = $request_url;
+	public function init(array $config, array $types, string $request_url, object $error) : void {
+		$this->router_config	= $config;
+		$this->types			= $types;
+		$this->request_url		= $request_url;
+		$this->error			= $error;
 	}
 	
 	public function getCurrentUrlParams() : array {
@@ -52,14 +54,14 @@ class Router {
 					'params'		=> $params, 
 					'query'			=> $this->params['query'], 
 					'url_params'	=> $this->getUrlParams($i),
-					'isApi'			=> $this->isApi($this->params['path'])
+					'isApi'			=> $this->isApi($this->params['path']),
 				];
 			}
 
 			$i++;
 		}
 
-		return Error::newError(404);
+		return $this->error->throwError(404);
 	}
 
 	private function getUrlParams(int $pos = 0) : array {
