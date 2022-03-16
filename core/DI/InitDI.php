@@ -7,6 +7,8 @@ use core\database\DB;
 use core\router\Router;
 use app\api\Api;
 use core\errors\Error;
+use app\controllers\controller\Controller;
+use app\views\view\View;
 
 class InitDI {
 
@@ -45,6 +47,8 @@ class InitDI {
 			$this->di->get('error')
 		));
 		$this->di->set('api', new Api());
+		$this->di->set('controller', new Controller());
+		$this->di->set('view', new View());
 
 		return $this;
 	}

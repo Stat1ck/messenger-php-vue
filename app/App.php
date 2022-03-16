@@ -7,6 +7,14 @@ use core\DI\SenderDI;
 class App extends SenderDI {
 	
 	public function start() {
-		$this->routerParams['isApi'] ? $this->api->init($this->routerParams)->start() : null;
+		$routerParams = $this->router->start();
+
+		$routerParams['isApi'] 
+			? $this->api
+				->init($routerParams)
+				->start() 
+			: $this->controller
+				->init($routerParams, $this->view)
+				->start();
 	}
 }

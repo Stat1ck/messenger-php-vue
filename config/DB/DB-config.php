@@ -5,5 +5,5 @@ return [
 	'dbname'		=> 'messenger-php-vue',
 	'dbuser'		=> 'root',
 	'dbpassword'	=> '',
-	'dbcharset'		=> 'utf-8',
+	'dbcharset'		=> 'utf8',
 ];

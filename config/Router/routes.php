@@ -1,11 +1,11 @@
-<?php
+ï»¿<?php
 
 return [
 
 	'/:userid' => [
 		'controller'	=> 'account',
 		'action'		=> 'userpage',
-		'title'			=> 'Ñòğàíèöà',
+		'title'			=> 'Ğ¡Ñ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğ°',
 		'method'		=> 'GET',
 		'access'		=> 'public',
 	],
@@ -13,23 +13,23 @@ return [
 	'/group/:groupname' => [
 		'controller'	=> 'group',
 		'action'		=> 'grouppage',
-		'title'			=> 'Ñòğàíèöà',
+		'title'			=> 'Ğ¡Ñ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğ°',
 		'method'		=> 'GET',
 		'access'		=> 'public',
 	],
 
 	'/' => [
-		'controller'	=> 'main',
+		'controller'	=> 'index',
 		'action'		=> 'index',
-		'title'			=> 'Ãëàâíàÿ',
+		'title'			=> 'Ğ“Ğ»Ğ°Ğ²Ğ½Ğ°Ñ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğ° | Hello',
 		'method'		=> 'GET',
 		'access'		=> 'public',
 	],
 
 	'/register' => [
-		'controller'	=> 'account',
+		'controller'	=> 'auth',
 		'action'		=> 'register',
-		'title'			=> 'Ğåãèñòğàöèÿ',
+		'title'			=> 'Ğ ĞµĞ³Ğ¸ÑÑ‚Ñ€Ğ°Ñ†Ğ¸Ñ',
 		'method'		=> 'GET',
 		'access'		=> 'public',
 	],
