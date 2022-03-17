@@ -2,15 +2,15 @@
 
 namespace app\controllers;
 
-use app\abstracts\Controller;
+use app\controllers\controller\AbstractController;
 
-class AuthController extends Controller {
+class AuthController extends AbstractController {
 
-	public function AuthRegisterAction() {
-		$views = ['header', 'authRegister'];
+	public function registerAction() : void {
+		$views = ['header', 'register'];
 		$vars  = [
 			'title'		=> $this->params['params']['title'],
-			'styles'	=> [],
+			'styles'	=> ['header', 'register'],
 			'scripts'	=> [],
 		];
 

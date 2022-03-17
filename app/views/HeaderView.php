@@ -2,7 +2,7 @@
 
 	<div class="logo-wrapper">
 		<a href="/">
-			<img src="/frontend/images/logo.gif" alt="logo" class="logo">
+			<img src="/app/assets/images/logo.gif" alt="logo" class="logo" />
 		</a>
 	</div>
 

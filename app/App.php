@@ -11,10 +11,10 @@ class App extends SenderDI {
 
 		$routerParams['isApi'] 
 			? $this->api
-				->init($routerParams)
+				->init($this->apiModel, $routerParams, $this->response, $this->method)
 				->start() 
 			: $this->controller
-				->init($routerParams, $this->view)
+				->init($this->view, $this->model, $this->response, $routerParams, $this->method)
 				->start();
 	}
 }

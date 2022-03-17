@@ -153,8 +153,10 @@ class Router {
 	}
 
 	private function isApi($path = []) : bool {
-		if ($path[1] === 'api') {
-			return true;
+		if (array_key_exists(1, $path)) {
+			if ($path[1] === 'api') {
+				return true;
+			}
 		}
 
 		return false;

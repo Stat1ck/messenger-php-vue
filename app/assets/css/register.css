@@ -1,0 +1,82 @@
+.forms-wrapper {
+	min-height: 100vh;
+	width: 100%;
+	background-image: url('/app/assets/images/main-fon.jpg');
+	background-size: 100% 100%;
+	background-repeat: none;
+}
+
+.forms-wrapper {
+	justify-content: center;
+	align-items: center;
+}
+
+.form-login,
+.form-register {
+	padding: 30px 20px;
+	background-color: var(--whiteFonColor);
+	color: var(--mainFonColor);
+	border-radius: 25px;
+}
+
+.form-labels,
+.form-inputs,
+.forms-wrapper,
+.form-content,
+.form-inp,
+.form-button {
+	display: flex;
+}
+
+.form-inp {
+	padding: 20px 0;
+	font-size: 22px;
+}
+
+.form-login h2 {
+	text-align: center;
+}
+
+.form-content,
+.form-labels,
+.form-inputs {
+	flex-direction: column;
+}	
+
+.form-labels label {
+	padding: 22px;
+}
+
+.form-inputs input {
+	padding: 10px 10px 10px 10px;
+	margin: 11px 0 11px 10px;
+	outline: none;
+	border: 1px solid var(--mainFonColor);
+	color: var(--mainFonColor);
+	border-radius: 25px;
+	font-size: 22px;
+}
+
+.form-button {
+	justify-content: flex-end;
+}
+
+.btn-submit {
+	background-color: var(--mainFonColor);
+	color: var(--whiteFonColor);
+	text-decoration: none;
+	padding: 10px 30px;
+	border-radius: 30px;
+	font-size: 1.3rem;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	transition: all .5s ease;
+	border: 1px var(--whiteFonColor) solid;
+}
+
+.btn-submit:hover {
+	border: 1px var(--mainFonColor) solid;
+	background-color: var(--whiteFonColor);
+	color: var(--mainFonColor);
+}

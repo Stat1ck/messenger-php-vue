@@ -1,0 +1,59 @@
+.main-wrapper {
+	min-height: 100vh;
+	width: 100%;
+	background-image: url('/app/assets/images/main-fon.jpg');
+	background-size: 100% 100%;
+	background-repeat: none;
+}
+
+.main-center__block,
+.main-wrapper,
+.main-btns,
+.main-heading {
+	display: flex;
+}
+
+.main-center__block,
+.main-wrapper,
+.main-btns{
+	justify-content: center;
+	align-items: center;
+}
+
+.main-center__block {
+	min-width: 100%;
+	min-height: 50vh;
+	background-color: var(--whiteFonColor);
+}
+
+.main-heading {
+	color: var(--mainFonColor);
+	flex-direction: column;
+	justify-content: space-around;
+	min-height: 30vh;
+	font-size: 1.6rem;
+	letter-spacing: 0.2rem;
+	line-height: 5vh;
+	text-align: center;
+}
+
+.main-btns {
+	justify-content: space-around;
+}
+
+.main-btn {
+	background-color: var(--mainFonColor);
+	color: var(--whiteFonColor);
+	text-decoration: none;
+	padding: 20px 40px;
+	border-radius: 30px;
+	font-size: 1.3rem;
+	border: 1px var(--whiteFonColor) solid;
+	transition: all .5s ease;
+}
+
+.main-btn:hover {
+	border: 1px var(--mainFonColor) solid;
+	background-color: var(--whiteFonColor);
+	color: var(--mainFonColor);
+}

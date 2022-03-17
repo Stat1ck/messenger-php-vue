@@ -2,24 +2,23 @@
 
 namespace app\controllers\controller;
 
-class Controller {
+use app\controllers\controller\AbstractController;
 
-	private $params = [];
-	private $view;
+class Controller extends AbstractController {
 
-	public function init($params = [], object $view) : object {
-		$this->params	= $params;
-		$this->view		= $view;
+	public function init(object $view, object $model, object $response, $params = [], string $method) : object {
+		parent::init($view, $model, $response, $params, $method);
 
 		return $this;
 	}
 
 	public function start() : void {
 		$controllerPath = 'app\controllers\\' . ucfirst($this->params['params']['controller']) . 'Controller';
-		$action = ucfirst($this->params['params']['controller']) . $this->params['params']['action'] . 'Action';
+		$action = $this->params['params']['action'] . 'Action';
 
 		if (class_exists($controllerPath)) {
-			$controller = new $controllerPath($this->view, $this->params);
+			$controller = new $controllerPath();
+			$controller->init($this->view, $this->model, $this->response, $this->params, $this->method);
 
 			if (method_exists($controllerPath, $action)) {
 				$controller->$action();
