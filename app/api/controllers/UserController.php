@@ -8,6 +8,6 @@ class UserController extends ApiController {
 	
 	public function createAction() {
 		//debug($this->apiModel);
-		echo 'Creating new User ...';
+		echo json_encode(['mess' => 'yes']);
 	}
 }

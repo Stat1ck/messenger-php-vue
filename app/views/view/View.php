@@ -15,7 +15,7 @@ class View {
 
 		ob_start();
 		foreach ($views as $view) {
-			$path = D . '/app/views/' . $view . 'View.php';
+			$path = D . '/app/views/' . $view . 'View.html';
 			if (file_exists($path)) {
 				require $path;
 			}

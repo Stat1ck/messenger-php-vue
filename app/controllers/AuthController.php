@@ -11,7 +11,7 @@ class AuthController extends AbstractController {
 		$vars  = [
 			'title'		=> $this->params['params']['title'],
 			'styles'	=> ['header', 'register'],
-			'scripts'	=> [],
+			'scripts'	=> ['registerApp'],
 		];
 
 		$this->view->render($views, $vars);

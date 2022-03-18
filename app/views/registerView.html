@@ -1,7 +1,7 @@
 	<section class="forms-wrapper">
 		<div class="form-register">
 			<h2>Регистрация</h2>
-			<form action="/api/create/user" method="POST" class="form-auth">
+			<form action="/api/create/user" method="POST" name="form-reg" @submit.prevent="onRegister">
 				<div class="form-content">
 					<div class="form-inp">
 						<div class="form-labels">
