@@ -36,7 +36,7 @@
 	</div>
 
 	<script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
-	<script src="https://unpkg.com/vue@3"></script>
+	<script src="app/assets/js/vue.js"></script>
 
 	<?php echo $scripts; ?>
 
